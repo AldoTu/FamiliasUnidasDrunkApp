@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Drunk App</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_drunk">Drunk</string>
+    <string name="title_activity_result">Result</string>
+    <string name="title_activity_test">Test</string>
+</resources>
