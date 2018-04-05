@@ -1,6 +1,8 @@
 package mx.com.atmen.drunkapp;
 
-public class Enemy {
+import android.graphics.Rect;
+
+public class Enemy{
 
     protected int id;
     protected int x;

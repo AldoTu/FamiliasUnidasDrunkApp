@@ -27,7 +27,7 @@ public class Drunk extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Drunk.this, Result.class);
-                intent.putExtra("Result", 5);
+                intent.putExtra("score", 5);
                 startActivity(intent);
             }
         });

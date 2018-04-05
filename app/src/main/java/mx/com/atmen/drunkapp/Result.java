@@ -18,7 +18,7 @@ public class Result extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        int result = getIntent().getIntExtra("Result", 0);
+        int result = getIntent().getIntExtra("score", 0);
         coordinatorLayout = (CoordinatorLayout)findViewById(R.id.bckg);
         textView = (TextView)findViewById(R.id.textView);
         btnOk = (Button)findViewById(R.id.btnOk);
