@@ -5,48 +5,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="mx.com.atmen.drunkapp.Drunk"
     tools:showIn="@layout/activity_drunk">
 
+    <VideoView
+        android:id="@+id/videoViewD"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CCFFFFFF"/>
+
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@mipmap/fulogo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="125dp"/>
+        android:layout_marginTop="115dp"/>
 
     <TextView
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="285dp"
         android:text="¿Has tomado recientemente bebidas alcohólicas?"
         android:gravity="center"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:id="@+id/textView2" />
 
-    <Button
+    <com.dd.CircularProgressButton
         android:id="@+id/btnYes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="¡Por Supuesto!"
+        android:layout_width="196dp"
+        android:layout_height="64dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:cpb_textComplete="¡Vamos!"
+        app:cpb_textIdle="¡Por Supuesto!"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="150dp"/>
+        android:layout_marginBottom="200dp"/>
 
-    <Button
+    <com.dd.CircularProgressButton
         android:id="@+id/btnNo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Para nada"
+        android:layout_width="196dp"
+        android:layout_height="64dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:cpb_textComplete="¡Excelente!"
+        app:cpb_textIdle="Para Nada"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="80dp"/>
+        android:layout_marginBottom="100dp"/>
 
 </android.support.constraint.ConstraintLayout>

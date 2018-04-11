@@ -11,11 +11,12 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -36,8 +37,6 @@ public class Test extends AppCompatActivity implements SensorEventListener{
 
     private int narX = 0;
     private int narY = 0;
-    private int blaX = 0;
-    private int blaY = 0;
     int score = 0;
     int match = 0;
 
@@ -47,14 +46,14 @@ public class Test extends AppCompatActivity implements SensorEventListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_test);
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         ivBlanco = (ImageView)findViewById(R.id.ivBlanco);
         ivNaranja = (ImageView)findViewById(R.id.ivNaranja);
         ivBlanco.setX(random.nextFloat()*displayMetrics.widthPixels);
         ivBlanco.setY(random.nextFloat()*displayMetrics.heightPixels);
-        ivBlanco.setX(blaX);
-        ivBlanco.setY(blaY);
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
@@ -63,7 +62,7 @@ public class Test extends AppCompatActivity implements SensorEventListener{
         v1_rect = new Rect((int)ivNaranja.getX() - 12, (int)ivNaranja.getY() - 12, (int)ivNaranja.getX() + 12, (int)ivNaranja.getY() + 12);
         v2_rect = new Rect((int)ivBlanco.getX() - 12, (int)ivBlanco.getY() - 12, (int)ivBlanco.getX() + 12, (int)ivBlanco.getY() + 12);
         layout = (RelativeLayout)findViewById(R.id.relativeLayout);
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 15; i++){
             ImageView imageView = new ImageView(this);
             Rect rect = new Rect();
             imageView.setImageResource(R.drawable.ic_explosion);
@@ -86,22 +85,24 @@ public class Test extends AppCompatActivity implements SensorEventListener{
             ivNaranja.setY(narY);
             ivNaranja.setX(narX);
             v1_rect.set((int)ivNaranja.getX() - 12, (int)ivNaranja.getY() - 12, (int)ivNaranja.getX() + 12, (int)ivNaranja.getY() + 12);
-            for(int i = 0; i < 10; i++){
+            for(int i = 0; i < 15; i++){
                 if(Rect.intersects(v1_rect, rects.get(i))){
                     ivBlanco.setX(random.nextFloat()*displayMetrics.widthPixels);
                     ivBlanco.setY(random.nextFloat()*displayMetrics.heightPixels);
                     v2_rect.set((int)ivBlanco.getX() - 12, (int)ivBlanco.getY() - 12, (int)ivBlanco.getX() + 12, (int)ivBlanco.getY() + 12);
                     Toast.makeText(this, "¡Has chocado!", Toast.LENGTH_SHORT).show();
                     match++;
-                    float x = random.nextFloat()*displayMetrics.widthPixels;
-                    float y = random.nextFloat()*displayMetrics.heightPixels;
-                    ImageView imageView = images.get(i);
-                    imageView.setX(x);
-                    imageView.setY(y);
-                    images.set(i, imageView);
-                    Rect newRect = rects.get(i);
-                    newRect.set((int)x - 12, (int)y - 12, (int)x + 12, (int)y + 12);
-                    rects.set(i, newRect);
+                    for(int j = 0; j < 15; j++){
+                        float x = random.nextFloat()*displayMetrics.widthPixels;
+                        float y = random.nextFloat()*displayMetrics.heightPixels;
+                        ImageView imageView = images.get(j);
+                        imageView.setX(x);
+                        imageView.setY(y);
+                        images.set(j, imageView);
+                        Rect newRect = rects.get(j);
+                        newRect.set((int)x - 12, (int)y - 12, (int)x + 12, (int)y + 12);
+                        rects.set(j, newRect);
+                    }
                 }
             }
             if(Rect.intersects(v1_rect, v2_rect)){

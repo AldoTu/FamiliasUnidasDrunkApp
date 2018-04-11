@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.com.atmen.drunkapp.Drunk"
-    android:background="@color/colorPrimaryDark">
+    tools:context="mx.com.atmen.drunkapp.Drunk">
 
     <include layout="@layout/content_drunk" />
 
