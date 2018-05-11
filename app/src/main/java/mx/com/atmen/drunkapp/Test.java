@@ -59,8 +59,8 @@ public class Test extends AppCompatActivity implements SensorEventListener{
         pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
         wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
         wl.acquire();
-        v1_rect = new Rect((int)ivNaranja.getX() - 12, (int)ivNaranja.getY() - 12, (int)ivNaranja.getX() + 12, (int)ivNaranja.getY() + 12);
-        v2_rect = new Rect((int)ivBlanco.getX() - 12, (int)ivBlanco.getY() - 12, (int)ivBlanco.getX() + 12, (int)ivBlanco.getY() + 12);
+        v1_rect = new Rect((int)ivNaranja.getX() - 13, (int)ivNaranja.getY() - 13, (int)ivNaranja.getX() + 13, (int)ivNaranja.getY() + 13);
+        v2_rect = new Rect((int)ivBlanco.getX() - 13, (int)ivBlanco.getY() - 13, (int)ivBlanco.getX() + 13, (int)ivBlanco.getY() + 13);
         layout = (RelativeLayout)findViewById(R.id.relativeLayout);
         for(int i = 0; i < 15; i++){
             ImageView imageView = new ImageView(this);
@@ -71,7 +71,7 @@ public class Test extends AppCompatActivity implements SensorEventListener{
             imageView.setX(x);
             imageView.setY(y);
             images.add(imageView);
-            rect.set((int)x - 12, (int)y - 12, (int)x + 12, (int)y + 12);
+            rect.set((int)x - 13, (int)y - 13, (int)x + 13, (int)y + 13);
             rects.add(rect);
             layout.addView(imageView);
         }
@@ -84,12 +84,12 @@ public class Test extends AppCompatActivity implements SensorEventListener{
             narY += (int)event.values[1];
             ivNaranja.setY(narY);
             ivNaranja.setX(narX);
-            v1_rect.set((int)ivNaranja.getX() - 12, (int)ivNaranja.getY() - 12, (int)ivNaranja.getX() + 12, (int)ivNaranja.getY() + 12);
+            v1_rect.set((int)ivNaranja.getX() - 13, (int)ivNaranja.getY() - 13, (int)ivNaranja.getX() + 13, (int)ivNaranja.getY() + 13);
             for(int i = 0; i < 15; i++){
                 if(Rect.intersects(v1_rect, rects.get(i))){
                     ivBlanco.setX(random.nextFloat()*displayMetrics.widthPixels);
                     ivBlanco.setY(random.nextFloat()*displayMetrics.heightPixels);
-                    v2_rect.set((int)ivBlanco.getX() - 12, (int)ivBlanco.getY() - 12, (int)ivBlanco.getX() + 12, (int)ivBlanco.getY() + 12);
+                    v2_rect.set((int)ivBlanco.getX() - 13, (int)ivBlanco.getY() - 13, (int)ivBlanco.getX() + 13, (int)ivBlanco.getY() + 13);
                     Toast.makeText(this, "¡Has chocado!", Toast.LENGTH_SHORT).show();
                     match++;
                     for(int j = 0; j < 15; j++){
@@ -100,7 +100,7 @@ public class Test extends AppCompatActivity implements SensorEventListener{
                         imageView.setY(y);
                         images.set(j, imageView);
                         Rect newRect = rects.get(j);
-                        newRect.set((int)x - 12, (int)y - 12, (int)x + 12, (int)y + 12);
+                        newRect.set((int)x - 13, (int)y - 13, (int)x + 13, (int)y + 13);
                         rects.set(j, newRect);
                     }
                 }
@@ -108,7 +108,7 @@ public class Test extends AppCompatActivity implements SensorEventListener{
             if(Rect.intersects(v1_rect, v2_rect)){
                 ivBlanco.setX(random.nextFloat()*displayMetrics.widthPixels);
                 ivBlanco.setY(random.nextFloat()*displayMetrics.heightPixels);
-                v2_rect.set((int)ivBlanco.getX() - 12, (int)ivBlanco.getY() - 12, (int)ivBlanco.getX() + 12, (int)ivBlanco.getY() + 12);
+                v2_rect.set((int)ivBlanco.getX() - 13, (int)ivBlanco.getY() - 13, (int)ivBlanco.getX() + 13, (int)ivBlanco.getY() + 13);
                 Toast.makeText(this, "¡Bien hecho!", Toast.LENGTH_SHORT).show();
                 match++;
                 score++;

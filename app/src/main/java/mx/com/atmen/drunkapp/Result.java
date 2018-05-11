@@ -2,18 +2,19 @@ package mx.com.atmen.drunkapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.dd.morphingbutton.MorphingButton;
 
 public class Result extends AppCompatActivity {
 
     TextView textView;
-    Button btnOk;
     CoordinatorLayout coordinatorLayout;
 
     @Override
@@ -25,12 +26,25 @@ public class Result extends AppCompatActivity {
         int result = getIntent().getIntExtra("score", 0);
         coordinatorLayout = (CoordinatorLayout)findViewById(R.id.bckg);
         textView = (TextView)findViewById(R.id.textView);
-        btnOk = (Button)findViewById(R.id.btnOk);
-        btnOk.setOnClickListener(new View.OnClickListener() {
+        final Handler handler = new Handler();
+        final MorphingButton btnMorph = (MorphingButton)findViewById(R.id.btnOk);
+        btnMorph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Result.this, Drunk.class);
-                startActivity(intent);
+                MorphingButton.Params circle = MorphingButton.Params.create()
+                        .duration(1000)
+                        .cornerRadius((int)getResources().getDimension(R.dimen.mg_56))
+                        .width((int)getResources().getDimension(R.dimen.mg_56))
+                        .height((int)getResources().getDimension(R.dimen.mg_56))
+                        .color(getResources().getColor(R.color.green))
+                        .icon(R.drawable.ic_check);
+                btnMorph.morph(circle);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(Result.this, Drunk.class));
+                    }
+                }, 2000);
             }
         });
         if(result == 5){

@@ -22,13 +22,13 @@
             android:id="@+id/ivBlanco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/bbb"/>
+            android:src="@drawable/ic_house"/>
 
         <ImageView
             android:id="@+id/ivNaranja"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/bbn"/>
+            android:src="@drawable/ic_car"/>
 
     </RelativeLayout>
 
