@@ -8,11 +8,6 @@
     tools:context="mx.com.atmen.drunkapp.Test"
     tools:showIn="@layout/activity_test">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Coloca el balón naranja encima del balón transparente"/>
-
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"

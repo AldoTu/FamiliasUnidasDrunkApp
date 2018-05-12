@@ -1,5 +1,6 @@
 package mx.com.atmen.drunkapp;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -10,9 +11,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.dd.CircularProgressButton;
+
+import static java.security.AccessController.getContext;
 
 public class Drunk extends AppCompatActivity {
 
@@ -42,12 +46,19 @@ public class Drunk extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btnYes.setProgress(100);
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(Drunk.this, Test.class));
-                    }
-                }, 1250);
+                final Dialog dialog = new Dialog(Drunk.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.custom_dialog);
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.setCancelable(true);
+                Button btnGo = (Button)dialog.findViewById(R.id.btnFinalYes);
+                btnGo.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(Drunk.this, Test.class));
+                            }
+                        });
+                dialog.show();
             }
         });
         btnNo.setOnClickListener(new View.OnClickListener() {
